@@ -1,0 +1,105 @@
+{
+  "base_model": "microsoft/deberta-v3-small",
+  "max_length": 512,
+  "num_categories": 7,
+  "categories": [
+    "violence",
+    "hate",
+    "sexual",
+    "self_harm",
+    "dangerous_info",
+    "harassment",
+    "illegal_activity"
+  ],
+  "pruning": {
+    "layers_to_keep": [
+      0,
+      1,
+      4,
+      5
+    ],
+    "layers_to_drop": [
+      2,
+      3
+    ]
+  },
+  "training": {
+    "phase1": {
+      "num_epochs": 3,
+      "batch_size": 64,
+      "gradient_accumulation_steps": 4,
+      "learning_rate": 2e-05,
+      "weight_decay": 0.01,
+      "warmup_ratio": 0.05,
+      "early_stopping_patience": 2,
+      "best_model_metric": "f1_binary"
+    },
+    "phase2": {
+      "num_epochs": 5,
+      "batch_size": 64,
+      "gradient_accumulation_steps": 4,
+      "learning_rate": 2e-05,
+      "weight_decay": 0.01,
+      "warmup_ratio": 0.05,
+      "confidence_low": 0.3,
+      "confidence_high": 0.7,
+      "best_model_metric": "f1_binary"
+    },
+    "recovery": {
+      "num_epochs": 2,
+      "batch_size": 128,
+      "gradient_accumulation_steps": 2,
+      "learning_rate": 2e-05,
+      "weight_decay": 0.01,
+      "warmup_ratio": 0.1
+    },
+    "eval_batch_size": 512,
+    "num_workers": 12,
+    "focal_loss_gamma": 2.0,
+    "label_smoothing": 0.1,
+    "category_loss_weight": 0.7,
+    "asl_gamma_pos": 1.0,
+    "asl_gamma_neg": 4.0,
+    "asl_clip": 0.05,
+    "rdrop_alpha": 1.0,
+    "fgm_epsilon": 0.3,
+    "ema_decay": 0.999,
+    "multi_sample_dropout_count": 5
+  },
+  "filtering": {
+    "min_confidence": 0.8,
+    "dedup_similarity_threshold": 0.95,
+    "min_tokens": 3,
+    "max_tokens": 512,
+    "target_safe_ratio": 0.55,
+    "target_unsafe_ratio": 0.45
+  },
+  "splits": {
+    "train": 0.85,
+    "val": 0.1,
+    "test": 0.05
+  },
+  "hard_negatives": {
+    "model": "claude-sonnet-4-6",
+    "total": 12000,
+    "examples_per_request": 15,
+    "max_workers": 8
+  },
+  "jigsaw": {
+    "toxicity_threshold": 0.7,
+    "max_samples": 20000,
+    "use_soft_labels": false
+  },
+  "inference": {
+    "binary_threshold": 0.3,
+    "category_thresholds": {
+      "violence": 0.5,
+      "hate": 0.5,
+      "sexual": 0.5,
+      "self_harm": 0.5,
+      "dangerous_info": 0.5,
+      "harassment": 0.5,
+      "illegal_activity": 0.5
+    }
+  }
+}
